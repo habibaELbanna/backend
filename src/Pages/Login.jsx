@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
+import Sidebar from '../Componants/Sidebar';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -11,20 +12,21 @@ const AdminLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Add your authentication logic here
+   
     console.log('Login attempt:', { email, password, rememberMe });
     
-    // Example: Navigate to admin dashboard after successful login
-    // navigate('/admin/dashboard');
+
   };
 
   const handleForgotPassword = () => {
-    // Navigate to forgot password page or show modal
+
     navigate('/forgot-password');
   };
 
   return (
-    <div className="admin-login-container">
+    <>
+    <Sidebar/>
+    {/* <div className="admin-login-container">
       <div className="admin-login-left">
         <div className="gradient-background"></div>
       </div>
@@ -93,7 +95,8 @@ const AdminLogin = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div> */}
+    </>
   );
 };
 

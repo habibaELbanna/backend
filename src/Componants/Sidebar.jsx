@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import './Sidebar.css';
 
 
-import dashboardIcon from '../assets/icons/dashboard.svg';
-import projectsIcon from '../assets/icons/projects.svg';
-import skillsIcon from '../assets/icons/skills.svg';
-import experienceIcon from '../assets/icons/experience.svg';
-import profileIcon from '../assets/icons/profile.svg';
-import settingsIcon from '../assets/icons/settings.svg';
-import messagesIcon from '../assets/icons/messages.svg';
-import logoutIcon from '../assets/icons/logout.svg';
+import dashboardIcon from '../Assets/sidebar/dashboard.svg';
+import projectsIcon from '../Assets/sidebar/projects.svg';
+import skillsIcon from '../Assets/sidebar/skills.svg';
+import experienceIcon from '../Assets/sidebar/experience.svg';
+import profileIcon from '../Assets/sidebar/profile.svg';
+import settingsIcon from '../Assets/sidebar/settings.svg';
+import messagesIcon from '../Assets/sidebar/messages.svg';
+import logoutIcon from '../Assets/sidebar/logout.svg';
+import profile from '../Assets/sidebar/profileimage.svg';
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -43,7 +45,7 @@ const Sidebar = () => {
       <div className="sidebar-header">
         <div className="sidebar-profile-image">
           <img 
-            src="/path-to-your-profile-image.jpg" 
+            src={profile}
             alt="Profile" 
             className="sidebar-avatar"
           />
@@ -85,9 +87,11 @@ const Sidebar = () => {
             alt="Logout icon" 
             className="sidebar-icon"
           />
+          <Link to = '/'>
           <span className="sidebar-label">Logout</span>
+          </Link>
         </button>
-      </div>
+      </div> 
     </div>
   );
 };
