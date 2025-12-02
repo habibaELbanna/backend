@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
 import Sidebar from '../Componants/Sidebar';
+import DashboardHeader from '../Componants/DashboardHeader';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +27,8 @@ const AdminLogin = () => {
   return (
     <>
     <Sidebar/>
-    {/* <div className="admin-login-container">
+    <DashboardHeader />
+    <div className="admin-login-container">
       <div className="admin-login-left">
         <div className="gradient-background"></div>
       </div>
@@ -95,7 +97,7 @@ const AdminLogin = () => {
           </form>
         </div>
       </div>
-    </div> */}
+    </div>
     </>
   );
 };
