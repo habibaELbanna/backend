@@ -87,7 +87,7 @@ const Sidebar = () => {
             alt="Logout icon" 
             className="sidebar-icon"
           />
-          <Link to = '/'>
+          <Link className='logout' to = '/'>
           <span className="sidebar-label">Logout</span>
           </Link>
         </button>

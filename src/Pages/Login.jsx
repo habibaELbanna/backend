@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
-
+import {Link} from 'react-router-dom'
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -90,10 +90,13 @@ const AdminLogin = () => {
                 Forgot Password?
               </button>
             </div>
+<Link to = '/dashboard'>
 
-            <button type="submit" className="admin-submit-button">
+ <button type="submit" className="admin-submit-button">
               Sign In
             </button>
+</Link>
+           
           </form>
         </div>
       </div>

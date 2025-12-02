@@ -1,5 +1,7 @@
 .dashboard-header {
-  width: 100%;
+  position: fixed;
+  left: 256px;
+  right: 0;
   height: 70px;
   background-color: #0A0A1A;
   border-bottom: 1px solid #1e293b;
@@ -7,7 +9,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  position: sticky;
   top: 0;
   z-index: 100;
 }
@@ -132,6 +133,7 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .dashboard-header {
+    left: 220px;
     padding: 0 1.5rem;
   }
 
@@ -142,6 +144,9 @@
 
 @media (max-width: 768px) {
   .dashboard-header {
+    position: relative;
+    left: 0;
+    right: auto;
     padding: 0 1rem;
     height: auto;
     min-height: 70px;

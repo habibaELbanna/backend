@@ -9,6 +9,7 @@
   left: 0;
   top: 0;
   border-right: 1px solid #1e293b;
+  z-index: 1000;
 }
 
 .sidebar-header {
@@ -24,7 +25,6 @@
   height: 48px;
   border-radius: 8px;
   overflow: hidden;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +119,6 @@
   opacity: 1;
 }
 
-
 .sidebar-nav-button-active .sidebar-icon {
   filter: brightness(0) invert(1);
 }
@@ -154,7 +153,10 @@
   transition: all 0.2s ease;
   text-align: left;
 }
-
+.logout{
+    text-decoration: none;
+    color:#2563eb ;
+}
 .sidebar-logout-button:hover {
   background-color: #1e293b;
   color: #ef4444;
@@ -164,7 +166,6 @@
   opacity: 1;
   filter: brightness(0) saturate(100%) invert(44%) sepia(89%) saturate(2774%) hue-rotate(338deg) brightness(96%) contrast(94%);
 }
-
 
 .sidebar-nav::-webkit-scrollbar {
   width: 6px;
