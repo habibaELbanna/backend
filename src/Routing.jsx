@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from './Componants/ScrollToTop';
 
 
 const Routing = () => {
@@ -10,7 +11,7 @@ const Routing = () => {
         <Routes>
 
 
-            
+
         </Routes>
       </BrowserRouter>
     </>
