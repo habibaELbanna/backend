@@ -3,6 +3,8 @@ import WelcomeBanner from '../Componants/WelcomeBanner';
 import StatCard from '../Componants/StatCard';
 import AnalyticsOverview from '../Componants/Analyticsoverview';
 import QuickActions from '../Componants/QuickActions';
+import RecentProjects from '../Componants/Recentprojects';
+
 import './Dashboard.css';
 import Sidebar from './Sidebar';
 import DashboardHeader from './DashboardHeader';
@@ -66,13 +68,18 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Full Width Card */}
-        <div className="dashboard-card dashboard-card-full">
-          <div className="dashboard-card-header">
-            <h2 className="dashboard-card-title">Recent Activity</h2>
+        {/* Recent Projects - Full Width */}
+        <div className="dashboard-card-full">
+          <RecentProjects />
+        </div>
+
+        {/* Bottom Grid - Activity & Performance */}
+        <div className="dashboard-bottom-grid">
+          <div className="dashboard-card-medium">
+         
           </div>
-          <div className="dashboard-card-body">
-            {/* Add your content here */}
+          <div className="dashboard-card-medium">
+        
           </div>
         </div>
       </div>
