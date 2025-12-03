@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import {Link} from 'react-router-dom'
 import './Sidebar.css';
-
 
 import dashboardIcon from '../Assets/sidebar/dashboard.svg';
 import projectsIcon from '../Assets/sidebar/projects.svg';
 import skillsIcon from '../Assets/sidebar/skills.svg';
-
 import profileIcon from '../Assets/sidebar/profile.svg';
 import settingsIcon from '../Assets/sidebar/settings.svg';
 import messagesIcon from '../Assets/sidebar/messages.svg';
@@ -21,25 +18,40 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItems = [
-    { name: 'Dashboard', icon: dashboardIcon, path: '/admin/dashboard' },
-    { name: 'Projects', icon: projectsIcon, path: '/admin/projects' },
-    { name: 'Skills and Experience', icon: skillsIcon, path: '/admin/skills' },
-   
-    { name: 'Profile', icon: profileIcon, path: '/admin/profile' },
-    { name: 'Settings', icon: settingsIcon, path: '/admin/settings' },
-    { name: 'Messages', icon: messagesIcon, path: '/admin/messages' },
+    { name: 'Dashboard', icon: dashboardIcon, path: '/dashboard' },
+    { name: 'Projects', icon: projectsIcon, path: '/projectmanagment' },
+    { name: 'Skills and Experience', icon: skillsIcon, path: '/skillsandexperiance' },
+    // Uncomment these when pages are ready:
+    // { name: 'Profile', icon: profileIcon, path: '/profile' },
+    // { name: 'Settings', icon: settingsIcon, path: '/settings' },
+    // { name: 'Messages', icon: messagesIcon, path: '/messages' },
   ];
+
+  // Set active item based on current location
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeMenuItem = menuItems.find(item => item.path === currentPath);
+    if (activeMenuItem) {
+      setActiveItem(activeMenuItem.name);
+    }
+  }, [location.pathname]);
 
   const handleNavigation = (item) => {
     setActiveItem(item.name);
     navigate(item.path);
-    setIsMobileMenuOpen(false); // Close menu after navigation
+    setIsMobileMenuOpen(false);
   };
 
   const handleLogout = () => {
+    // Clear authentication data
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userToken');
+    
     console.log('Logging out...');
-    navigate('/admin/login');
     setIsMobileMenuOpen(false);
+    
+    // Navigate to login page
+    navigate('/');
   };
 
   const toggleMobileMenu = () => {
@@ -114,9 +126,7 @@ const Sidebar = () => {
               alt="Logout icon" 
               className="sidebar-icon"
             />
-            <Link className='logout' to = '/'>
-              <span className="sidebar-label">Logout</span>
-            </Link>
+            <span className="sidebar-label">Logout</span>
           </button>
         </div> 
       </div>
