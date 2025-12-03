@@ -26,8 +26,8 @@ const AdminLogin = () => {
 
   return (
     <>
-    <Sidebar/>
-    <DashboardHeader />
+  
+ 
     <div className="admin-login-container">
       <div className="admin-login-left">
         <div className="gradient-background"></div>
