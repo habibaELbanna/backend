@@ -1,0 +1,142 @@
+.skills-experience-page {
+  margin-left: 256px;
+  padding: 90px 2rem 2rem 2rem;
+  min-height: 100vh;
+  background-color: #0A0A1A;
+  box-sizing: border-box;
+}
+
+/* Page Header */
+.page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-header-content h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.page-header-content p {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.section-header-content h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.section-header-content p {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Add Buttons */
+.add-category-btn,
+.add-experience-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.add-category-btn span,
+.add-experience-btn span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-category-btn:hover,
+.add-experience-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+/* Sections */
+.skills-section {
+  margin-bottom: 2rem;
+}
+
+.experience-section {
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .skills-experience-page {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-experience-page {
+    margin-left: 0;
+    padding: 1.5rem;
+    padding-top: 80px;
+  }
+
+  .page-header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header-content p {
+    font-size: 0.9rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .section-header-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .add-category-btn,
+  .add-experience-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-experience-page {
+    padding: 1rem;
+    padding-top: 70px;
+  }
+
+  .page-header-content h1 {
+    font-size: 1.25rem;
+  }
+
+  .section-header-content h2 {
+    font-size: 1.1rem;
+  }
+}
