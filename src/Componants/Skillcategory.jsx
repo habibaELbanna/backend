@@ -1,9 +1,9 @@
 import React from 'react';
-import './SkillCategory.css';
+import './Skillcategory.css';
 
 // Import icons
-import editIcon from '../Assets/dashboard/edit.svg';
-import deleteIcon from '../Assets/dashboard/delete.svg';
+import editIcon from '../Assets/skills/edit.svg';
+import deleteIcon from '../Assets/skills/delete.svg';
 
 const SkillCategory = ({ title, skills, onAddSkill, onEditCategory, onDeleteCategory }) => {
   return (
