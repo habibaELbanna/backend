@@ -1,11 +1,17 @@
 import React from 'react';
 import './TopPerforming.css';
 
+// Import your icons
+import eyeIcon from '../Assets/dashboard/eyes.png';
+import heartIcon from '../Assets/dashboard/heartr.png';
+import fireIcon from '../Assets/dashboard/fire.png';
+import sparkleIcon from '../Assets/dashboard/star.png';
+
 const TopPerforming = () => {
   const performers = [
     {
       id: 1,
-      icon: '👁',
+      icon: eyeIcon,
       category: 'Most Viewed',
       title: 'E-commerce Platform',
       metric: '45.2K views',
@@ -14,7 +20,7 @@ const TopPerforming = () => {
     },
     {
       id: 2,
-      icon: '❤',
+      icon: heartIcon,
       category: 'Most Liked',
       title: 'Dashboard Analytics',
       metric: '3.8K likes',
@@ -23,7 +29,7 @@ const TopPerforming = () => {
     },
     {
       id: 3,
-      icon: '🔥',
+      icon: fireIcon,
       category: 'Trending',
       title: 'Portfolio Redesign',
       metric: '892 interactions',
@@ -32,7 +38,7 @@ const TopPerforming = () => {
     },
     {
       id: 4,
-      icon: '✨',
+      icon: sparkleIcon,
       category: 'Recently Published',
       title: 'Mobile App UI',
       metric: '2 days ago',
@@ -49,7 +55,7 @@ const TopPerforming = () => {
         {performers.map((item) => (
           <div key={item.id} className="performing-item">
             <div className="performing-icon">
-              <span>{item.icon}</span>
+              <img src={item.icon} alt="" />
             </div>
             <div className="performing-content">
               <span className="performing-category">{item.category}</span>
