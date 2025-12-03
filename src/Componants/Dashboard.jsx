@@ -2,7 +2,7 @@ import React from 'react';
 import WelcomeBanner from '../Componants/WelcomeBanner';
 import StatCard from '../Componants/StatCard';
 import AnalyticsOverview from '../Componants/Analyticsoverview';
-
+import QuickActions from '../Componants/QuickActions';
 import './Dashboard.css';
 import Sidebar from './Sidebar';
 import DashboardHeader from './DashboardHeader';
@@ -62,7 +62,7 @@ const Dashboard = () => {
 
           {/* Right Column - Quick Actions */}
           <div className="dashboard-card-stack">
-         
+            <QuickActions />
           </div>
         </div>
 
