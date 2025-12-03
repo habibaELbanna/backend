@@ -18,6 +18,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeItem, setActiveItem] = useState('Dashboard');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItems = [
     { name: 'Dashboard', icon: dashboardIcon, path: '/admin/dashboard' },
@@ -32,67 +33,94 @@ const Sidebar = () => {
   const handleNavigation = (item) => {
     setActiveItem(item.name);
     navigate(item.path);
+    setIsMobileMenuOpen(false); // Close menu after navigation
   };
 
   const handleLogout = () => {
-   
     console.log('Logging out...');
     navigate('/admin/login');
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <div className="sidebar-container">
-      <div className="sidebar-header">
-        <div className="sidebar-profile-image">
-          <img 
-            src={profile}
-            alt="Profile" 
-            className="sidebar-avatar"
-          />
+    <>
+      {/* Mobile Burger Button */}
+      <button 
+        className="burger-menu-button" 
+        onClick={toggleMobileMenu}
+        aria-label="Toggle menu"
+      >
+        <span className={`burger-line ${isMobileMenuOpen ? 'burger-line-open' : ''}`}></span>
+        <span className={`burger-line ${isMobileMenuOpen ? 'burger-line-open' : ''}`}></span>
+        <span className={`burger-line ${isMobileMenuOpen ? 'burger-line-open' : ''}`}></span>
+      </button>
+
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="sidebar-overlay" 
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
+
+      {/* Sidebar */}
+      <div className={`sidebar-container ${isMobileMenuOpen ? 'sidebar-mobile-open' : ''}`}>
+        <div className="sidebar-header">
+          <div className="sidebar-profile-image">
+            <img 
+              src={profile}
+              alt="Profile" 
+              className="sidebar-avatar"
+            />
+          </div>
+          <div className="sidebar-header-text">
+            <h2 className="sidebar-title">Admin Panel</h2>
+            <p className="sidebar-subtitle">Portfolio Manager</p>
+          </div>
         </div>
-        <div className="sidebar-header-text">
-          <h2 className="sidebar-title">Admin Panel</h2>
-          <p className="sidebar-subtitle">Portfolio Manager</p>
-        </div>
+
+        <nav className="sidebar-nav">
+          <ul className="sidebar-menu">
+            {menuItems.map((item) => {
+              const isActive = activeItem === item.name;
+              
+              return (
+                <li key={item.name} className="sidebar-menu-item">
+                  <button
+                    onClick={() => handleNavigation(item)}
+                    className={`sidebar-nav-button ${isActive ? 'sidebar-nav-button-active' : ''}`}
+                  >
+                    <img 
+                      src={item.icon} 
+                      alt={`${item.name} icon`} 
+                      className="sidebar-icon"
+                    />
+                    <span className="sidebar-label">{item.name}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <div className="sidebar-footer">
+          <button onClick={handleLogout} className="sidebar-logout-button">
+            <img 
+              src={logoutIcon} 
+              alt="Logout icon" 
+              className="sidebar-icon"
+            />
+            <Link className='logout' to = '/'>
+              <span className="sidebar-label">Logout</span>
+            </Link>
+          </button>
+        </div> 
       </div>
-
-      <nav className="sidebar-nav">
-        <ul className="sidebar-menu">
-          {menuItems.map((item) => {
-            const isActive = activeItem === item.name;
-            
-            return (
-              <li key={item.name} className="sidebar-menu-item">
-                <button
-                  onClick={() => handleNavigation(item)}
-                  className={`sidebar-nav-button ${isActive ? 'sidebar-nav-button-active' : ''}`}
-                >
-                  <img 
-                    src={item.icon} 
-                    alt={`${item.name} icon`} 
-                    className="sidebar-icon"
-                  />
-                  <span className="sidebar-label">{item.name}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-
-      <div className="sidebar-footer">
-        <button onClick={handleLogout} className="sidebar-logout-button">
-          <img 
-            src={logoutIcon} 
-            alt="Logout icon" 
-            className="sidebar-icon"
-          />
-          <Link className='logout' to = '/'>
-          <span className="sidebar-label">Logout</span>
-          </Link>
-        </button>
-      </div> 
-    </div>
+    </>
   );
 };
 
