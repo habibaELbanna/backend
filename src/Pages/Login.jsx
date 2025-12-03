@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
-import Sidebar from '../Componants/Sidebar';
-import DashboardHeader from '../Componants/DashboardHeader';
+
 import {Link} from 'react-router-dom'
 const AdminLogin = () => {
   const [email, setEmail] = useState('');

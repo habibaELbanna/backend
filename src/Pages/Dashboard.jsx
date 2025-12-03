@@ -7,8 +7,8 @@ import RecentProjects from '../Componants/Recentprojects';
 import RecentActivity from '../Componants/Recentactivity';
 import TopPerforming from '../Componants/TopPerforming';
 import './Dashboard.css';
-import Sidebar from './Sidebar';
-import DashboardHeader from './DashboardHeader';
+import Sidebar from '../Componants/Sidebar';
+import DashboardHeader from '../Componants/DashboardHeader';
 
 // Import your icons
 import folderIcon from '../Assets/dashboard/folder.svg';

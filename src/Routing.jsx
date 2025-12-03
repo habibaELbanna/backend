@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from './Componants/ScrollToTop';
 import AdminLogin from "./Pages/Login";
-import Dashboard from "./Componants/Dashboard";
+import Dashboard from "./Pages/Dashboard";
 import ProjectManagement from "./Pages/Projectmanagement";
 
 
