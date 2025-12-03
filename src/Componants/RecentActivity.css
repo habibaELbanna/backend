@@ -1,0 +1,86 @@
+.recent-activity {
+  background:#0A0A1A;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+
+.activity-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.activity-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.icon-blue {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.icon-red {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.icon-yellow {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.activity-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-text {
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 4px 0;
+  line-height: 1.5;
+}
+
+.activity-time {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .recent-activity {
+    padding: 16px;
+  }
+
+  .activity-title {
+    font-size: 16px;
+  }
+
+  .activity-text {
+    font-size: 13px;
+  }
+}

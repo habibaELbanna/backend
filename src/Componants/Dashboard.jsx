@@ -4,6 +4,7 @@ import StatCard from '../Componants/StatCard';
 import AnalyticsOverview from '../Componants/Analyticsoverview';
 import QuickActions from '../Componants/QuickActions';
 import RecentProjects from '../Componants/Recentprojects';
+import RecentActivity from '../Componants/Recentactivity';
 
 import './Dashboard.css';
 import Sidebar from './Sidebar';
@@ -76,7 +77,7 @@ const Dashboard = () => {
         {/* Bottom Grid - Activity & Performance */}
         <div className="dashboard-bottom-grid">
           <div className="dashboard-card-medium">
-         
+            <RecentActivity />
           </div>
           <div className="dashboard-card-medium">
         
