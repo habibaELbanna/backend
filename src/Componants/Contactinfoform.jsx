@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './ContactInfoForm.css';
+import './Contactinfoform.css';
 
-// Import icons
+
 import emailIcon from '../Assets/profile/email.svg';
 import websiteIcon from '../Assets/profile/website.svg';
 

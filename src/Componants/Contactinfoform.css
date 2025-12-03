@@ -1,0 +1,81 @@
+.contact-info-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Reusing styles from BasicInfoForm */
+.contact-info-section .section-title {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+}
+
+.contact-info-section .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-section .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-section .form-label {
+  display: block;
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-section .form-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #e5e7eb;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.contact-info-section .input-with-icon {
+  position: relative;
+}
+
+.contact-info-section .input-with-icon .form-input {
+  padding-left: 2.5rem;
+}
+
+.contact-info-section .input-icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.contact-info-section .form-input:focus {
+  outline: none;
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.contact-info-section .form-input::placeholder {
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-info-section {
+    padding: 1.5rem;
+  }
+
+  .contact-info-section .form-group {
+    margin-bottom: 1.25rem;
+  }
+}
