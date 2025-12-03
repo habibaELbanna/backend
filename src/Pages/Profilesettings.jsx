@@ -4,7 +4,7 @@ import DashboardHeader from '../Componants/DashboardHeader';
 import ProfileImageUpload from '../Componants/ProfileImageUpload';
 import BasicInfoForm from '../Componants/BasicInfoForm';
 import ContactInfoForm from '../Componants/ContactInfoForm';
-import SocialLinksForm from '../Componants/SocialLinksForm';
+import SocialLinksForm from '../Componants/Sociallinksform';
 import './ProfileSettings.css';
 
 const ProfileSettings = () => {
