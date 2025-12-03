@@ -1,0 +1,135 @@
+.project-management-page {
+  margin-left: 256px;
+  padding: 90px 2rem 2rem 2rem;
+  min-height: 100vh;
+  background-color: #0A0A1A;
+  box-sizing: border-box;
+}
+
+/* Custom Header */
+.project-management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-header-content h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.project-header-content p {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.new-project-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.new-project-btn span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.new-project-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+/* Project Count */
+.project-count {
+  margin-bottom: 1.5rem;
+}
+
+.project-count span {
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .project-management-page {
+    margin-left: 220px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .project-management-page {
+    margin-left: 0;
+    padding: 1.5rem;
+    padding-top: 80px;
+  }
+
+  .project-management-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .project-header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .project-header-content p {
+    font-size: 0.9rem;
+  }
+
+  .new-project-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-management-page {
+    padding: 1rem;
+    padding-top: 70px;
+  }
+
+  .project-header-content h1 {
+    font-size: 1.25rem;
+  }
+
+  .new-project-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

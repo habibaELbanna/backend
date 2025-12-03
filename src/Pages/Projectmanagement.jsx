@@ -5,11 +5,11 @@ import WelcomeBanner from '../Componants/WelcomeBanner';
 import ProjectCard from '../Componants/ProjectCard';
 import './ProjectManagement.css';
 
-// Import project images (you'll need to replace these with your actual images)
-import portfolioImg from '../Assets/projects/portfolio.jpg';
-import pinkTaxiImg from '../Assets/projects/pinktaxi.jpg';
-import esportsImg from '../Assets/projects/esports.jpg';
-import kemetImg from '../Assets/projects/kemet.jpg';
+
+import portfolioImg from '../Assets/projects/portfolio.svg';
+import pinkTaxiImg from '../Assets/projects/pinktaxi.png';
+import esportsImg from '../Assets/projects/esports.png';
+import kemetImg from '../Assets/projects/kemet.png';
 
 const ProjectManagement = () => {
   const [projects, setProjects] = useState([
