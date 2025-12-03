@@ -7,7 +7,7 @@ import './Sidebar.css';
 import dashboardIcon from '../Assets/sidebar/dashboard.svg';
 import projectsIcon from '../Assets/sidebar/projects.svg';
 import skillsIcon from '../Assets/sidebar/skills.svg';
-import experienceIcon from '../Assets/sidebar/experience.svg';
+
 import profileIcon from '../Assets/sidebar/profile.svg';
 import settingsIcon from '../Assets/sidebar/settings.svg';
 import messagesIcon from '../Assets/sidebar/messages.svg';
@@ -23,8 +23,8 @@ const Sidebar = () => {
   const menuItems = [
     { name: 'Dashboard', icon: dashboardIcon, path: '/admin/dashboard' },
     { name: 'Projects', icon: projectsIcon, path: '/admin/projects' },
-    { name: 'Skills', icon: skillsIcon, path: '/admin/skills' },
-    { name: 'Experience', icon: experienceIcon, path: '/admin/experience' },
+    { name: 'Skills and Experience', icon: skillsIcon, path: '/admin/skills' },
+   
     { name: 'Profile', icon: profileIcon, path: '/admin/profile' },
     { name: 'Settings', icon: settingsIcon, path: '/admin/settings' },
     { name: 'Messages', icon: messagesIcon, path: '/admin/messages' },
