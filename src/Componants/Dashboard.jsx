@@ -5,7 +5,7 @@ import AnalyticsOverview from '../Componants/Analyticsoverview';
 import QuickActions from '../Componants/QuickActions';
 import RecentProjects from '../Componants/Recentprojects';
 import RecentActivity from '../Componants/Recentactivity';
-
+import TopPerforming from '../Componants/TopPerforming';
 import './Dashboard.css';
 import Sidebar from './Sidebar';
 import DashboardHeader from './DashboardHeader';
@@ -80,7 +80,7 @@ const Dashboard = () => {
             <RecentActivity />
           </div>
           <div className="dashboard-card-medium">
-        
+        <TopPerforming />
           </div>
         </div>
       </div>
