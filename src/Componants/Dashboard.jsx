@@ -1,6 +1,8 @@
 import React from 'react';
 import WelcomeBanner from '../Componants/WelcomeBanner';
 import StatCard from '../Componants/StatCard';
+import AnalyticsOverview from '../Componants/Analyticsoverview';
+
 import './Dashboard.css';
 import Sidebar from './Sidebar';
 import DashboardHeader from './DashboardHeader';
@@ -20,7 +22,7 @@ const Dashboard = () => {
   
         <WelcomeBanner />
         
-        {/* Stats Cards Row */}
+        {/* Stats Grid */}
         <div className="dashboard-stats-grid">
           <StatCard 
             title="Total Projects"
@@ -53,42 +55,21 @@ const Dashboard = () => {
 
         {/* Main Content Grid */}
         <div className="dashboard-content-grid">
-          {/* Left Column - Large Card */}
-          <div className="dashboard-card dashboard-card-large">
-            <div className="dashboard-card-header">
-              <h2 className="dashboard-card-title">Card Title</h2>
-            </div>
-            <div className="dashboard-card-body">
-              {/* Add your content here */}
-            </div>
+          {/* Left Column - Analytics Overview */}
+          <div className="dashboard-card-large">
+            <AnalyticsOverview />
           </div>
 
-          {/* Right Column - Stacked Cards */}
+          {/* Right Column - Quick Actions */}
           <div className="dashboard-card-stack">
-            <div className="dashboard-card dashboard-card-small">
-              <div className="dashboard-card-header">
-                <h3 className="dashboard-card-title">Small Card</h3>
-              </div>
-              <div className="dashboard-card-body">
-                {/* Add your content here */}
-              </div>
-            </div>
-
-            <div className="dashboard-card dashboard-card-small">
-              <div className="dashboard-card-header">
-                <h3 className="dashboard-card-title">Small Card</h3>
-              </div>
-              <div className="dashboard-card-body">
-                {/* Add your content here */}
-              </div>
-            </div>
+         
           </div>
         </div>
 
         {/* Full Width Card */}
         <div className="dashboard-card dashboard-card-full">
           <div className="dashboard-card-header">
-            <h2 className="dashboard-card-title">Full Width Card</h2>
+            <h2 className="dashboard-card-title">Recent Activity</h2>
           </div>
           <div className="dashboard-card-body">
             {/* Add your content here */}

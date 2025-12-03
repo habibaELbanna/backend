@@ -1,0 +1,35 @@
+.analytics-overview {
+   background:#0A0A1A;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.analytics-header h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.analytics-header p {
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .analytics-overview {
+    padding: 16px;
+  }
+  
+  .analytics-header h2 {
+    font-size: 18px;
+  }
+  
+  .analytics-header p {
+    font-size: 13px;
+  }
+}
