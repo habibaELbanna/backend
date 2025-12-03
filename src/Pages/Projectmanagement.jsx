@@ -19,7 +19,7 @@ const ProjectManagement = () => {
       title: 'Portfolio Website Redesign',
       description: 'A modern, responsive portfolio website built with React and Tailwind CSS. Features smooth animations, dark mode support, and dynamic content loading.',
       category: 'Website',
-      tags: ['React', 'Tailwind CSS', 'TypeScript'],
+      tags: ['React.JS', ' CSS', 'Javascript'],
       codeLink: 'https://github.com/username/portfolio',
       demoLink: 'https://portfolio-demo.com'
     },
@@ -29,17 +29,17 @@ const ProjectManagement = () => {
       title: 'Transportation App',
       description: 'Cross-platform mobile transportation application with secure authentication, real-time tracking updates, and data UI/UX.',
       category: 'Mobile App',
-      tags: ['React Native', 'Node.js', 'Firebase'],
+      tags: ['HTML', 'CSS', 'Javascript'],
       codeLink: 'https://github.com/username/transport-app',
       demoLink: 'https://transport-demo.com'
     },
     {
       id: 3,
       image: esportsImg,
-      title: 'E-sports Platform',
+      title: 'ESCAPE ROOM Platform',
       description: 'Full-stack e-sports solution with payment integration, inventory management, and admin dashboard for managing matches and stats.',
       category: 'Web App',
-      tags: ['Next.js', 'Stripe', 'PostgreSQL'],
+      tags: ['HTML', 'CSS', 'JavaScript'],
       codeLink: 'https://github.com/username/esports',
       demoLink: 'https://esports-demo.com'
     },
@@ -49,7 +49,7 @@ const ProjectManagement = () => {
       title: 'history website',
       description: 'Real-time analytics dashboard with interactive charts, data visualization, and customizable reports for business intelligence.',
       category: 'Dashboard',
-      tags: ['Vue.js', 'Chart.js', 'Express'],
+      tags: ['HTML', 'CSS', 'JavaScript'],
       codeLink: 'https://github.com/username/history-website',
       demoLink: null
     }
