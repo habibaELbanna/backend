@@ -5,6 +5,7 @@ import AdminLogin from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import ProjectManagement from "./Pages/Projectmanagement";
 import SkillsExperience from "./Pages/Skillsexperience";
+import ProfileSettings from "./Pages/Profilesettings";
 
 
 const Routing = () => {
@@ -17,6 +18,7 @@ const Routing = () => {
      <Route path="/dashboard"  element={<Dashboard />} />
   <Route path="/projectmanagment"  element={<ProjectManagement />} />
   <Route path="/skillsandexperiance"  element={<SkillsExperience />} />
+    <Route path="/profile"  element={<ProfileSettings />} />
         </Routes>
       </BrowserRouter>
     </>

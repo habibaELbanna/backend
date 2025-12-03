@@ -21,8 +21,7 @@ const Sidebar = () => {
     { name: 'Dashboard', icon: dashboardIcon, path: '/dashboard' },
     { name: 'Projects', icon: projectsIcon, path: '/projectmanagment' },
     { name: 'Skills and Experience', icon: skillsIcon, path: '/skillsandexperiance' },
-    // Uncomment these when pages are ready:
-    // { name: 'Profile', icon: profileIcon, path: '/profile' },
+    { name: 'Profile', icon: profileIcon, path: '/profile' },
     // { name: 'Settings', icon: settingsIcon, path: '/settings' },
     // { name: 'Messages', icon: messagesIcon, path: '/messages' },
   ];
