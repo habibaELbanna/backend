@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BasicInfoForm.css';
 
-// Import icons
+
 import userIcon from '../Assets/profile/user.svg';
 
 const BasicInfoForm = ({ initialData, onDataChange }) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import ProfileImageUpload from '../Componants/ProfileImageUpload';
-import BasicInfoForm from '../Componants/BasicInfoForm';
+import BasicInfoForm from '../Componants/Basicinfoform';
 import ContactInfoForm from '../Componants/Contactinfoform';
 import SocialLinksForm from '../Componants/Sociallinksform';
 import './ProfileSettings.css';
