@@ -3,7 +3,7 @@ import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import ProfileImageUpload from '../Componants/ProfileImageUpload';
 import BasicInfoForm from '../Componants/BasicInfoForm';
-import ContactInfoForm from '../Componants/ContactInfoForm';
+import ContactInfoForm from '../Componants/Contactinfoform';
 import SocialLinksForm from '../Componants/Sociallinksform';
 import './ProfileSettings.css';
 

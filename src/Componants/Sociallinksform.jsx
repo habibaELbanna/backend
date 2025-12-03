@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SocialLinksForm.css';
 
 
-import linkedinIcon from '../Assets/profile/linkedin.svg';
+import linkedinIcon from '../Assets/profile/Linkedin.svg';
 import githubIcon from '../Assets/profile/github.svg';
 import behanceIcon from '../Assets/profile/behance.svg';
 
