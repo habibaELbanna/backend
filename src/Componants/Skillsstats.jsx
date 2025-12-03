@@ -2,10 +2,10 @@ import React from 'react';
 import './SkillsStats.css';
 
 // Import icons
-import codeIcon from '../Assets/dashboard/code.svg';
-import categoryIcon from '../Assets/dashboard/category.svg';
-import briefcaseIcon from '../Assets/dashboard/briefcase.svg';
-import calendarIcon from '../Assets/dashboard/calendar.svg';
+import codeIcon from '../Assets/skills/code.svg';
+import categoryIcon from '../Assets/skills/category.svg';
+import briefcaseIcon from '../Assets/skills/briefcase.svg';
+import calendarIcon from '../Assets/skills/calendar.svg';
 
 const SkillsStats = ({ totalSkills, categories, workExperience, yearsExperience }) => {
   const stats = [

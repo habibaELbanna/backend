@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
-
+import SkillsStats from '../Componants/Skillsstats';
+import SkillCategory from '../Componants/SkillCategory';
+import ExperienceCard from '../Componants/ExperienceCard';
 import './SkillsExperience.css';
 
 
