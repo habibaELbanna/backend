@@ -1,11 +1,11 @@
 import React from 'react';
-import './ExperienceCard.css';
+import './Experiencecard.css';
 
 // Import icons
-import editIcon from '../Assets/dashboard/edit.svg';
-import deleteIcon from '../Assets/dashboard/delete.svg';
-import companyIcon from '../Assets/dashboard/company.svg';
-import calendarIcon from '../Assets/dashboard/calendar.svg';
+import editIcon from '../Assets/skills/edit.svg';
+import deleteIcon from '../Assets/skills/delete.svg';
+import companyIcon from '../Assets/skills/company.svg';
+import calendarIcon from '../Assets/skills/calendar.svg';
 
 const ExperienceCard = ({ 
   title, 

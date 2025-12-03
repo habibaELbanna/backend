@@ -1,6 +1,7 @@
 .skill-category {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+ background:#0A0A1A;
+  border: 1px solid #1e293b;
+  border-radius: 1rem;
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -59,8 +60,8 @@
 }
 
 .category-action-btn img {
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
   opacity: 0.6;
 }
 
@@ -73,7 +74,7 @@
   opacity: 1;
 }
 
-/* Skills Grid */
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -140,8 +141,8 @@
 }
 
 .skill-action-btn img {
-  width: 12px;
-  height: 12px;
+  width: 24px;
+  height: 24px;
   opacity: 0.6;
 }
 
