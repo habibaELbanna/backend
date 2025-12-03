@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
-import ProjectCard from '../Componants/ProjectCard';
+import ProjectCard from '../Componants/Projectcard';
 import './ProjectManagement.css';
 
 
