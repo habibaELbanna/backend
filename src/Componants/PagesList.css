@@ -1,0 +1,108 @@
+.categories-list, .tags-list, .pages-list {
+  width: 100%;
+}
+
+.list-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.categories-grid, .tags-grid, .pages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.category-card, .tag-card, .page-card {
+  background: #0f1419;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.category-card:hover, .tag-card:hover, .page-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.category-header, .tag-header, .page-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.category-icon-wrapper, .tag-icon-wrapper, .page-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.category-info, .tag-info, .page-info {
+  flex: 1;
+}
+
+.category-name, .tag-name, .page-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.category-items, .tag-items {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
+
+.category-description, .tag-description, .page-description, .page-subtitle {
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.category-footer, .tag-footer, .page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.category-date, .tag-date, .page-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.delete-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .categories-grid, .tags-grid, .pages-grid {
+    grid-template-columns: 1fr;
+  }
+}
