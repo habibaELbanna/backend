@@ -1,5 +1,5 @@
 import React from 'react';
-import './DeleteProjectModal.css';
+import './Deleteprojectmodal.css';
 
 const DeleteProjectModal = ({ isOpen, onClose, onConfirm, projectTitle }) => {
   if (!isOpen) return null;

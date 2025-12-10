@@ -5,7 +5,7 @@ import WelcomeBanner from '../Componants/WelcomeBanner';
 import ProjectCard from '../Componants/Projectcard';
 import NewProjectForm from '../Componants/Newprojectmodal';
 import EditProjectModal from '../Componants/Editprojectmodal';
-import DeleteProjectModal from '../Componants/DeleteProjectModal';
+import DeleteProjectModal from '../Componants/Deleteprojectmodal';
 import './ProjectManagement.css';
 
 
