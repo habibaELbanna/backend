@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './ProfileImageUpload.css';
-
+import './Profileimageupload.css';
+import me from '../Assets/profile/Container.svg';
 const ProfileImageUpload = ({ currentImage, onImageChange }) => {
   const [imageUrl, setImageUrl] = useState(currentImage || '');
 
@@ -19,7 +19,7 @@ const ProfileImageUpload = ({ currentImage, onImageChange }) => {
       <div className="profile-image-content">
         <div className="profile-image-preview">
           <img 
-            src={imageUrl || 'https://via.placeholder.com/120'} 
+            src={ me} 
             alt="Profile" 
             className="profile-preview-img"
           />
