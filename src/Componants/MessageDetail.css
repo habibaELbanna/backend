@@ -1,0 +1,249 @@
+.message-detail-container {
+  background: #0f1419;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+.message-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.message-detail-header h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.new-badge {
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Message Card */
+.message-detail-card {
+  padding: 32px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.message-detail-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.message-detail-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.message-detail-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.message-detail-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Sender Info */
+.sender-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sender-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-circle-large {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.sender-details {
+  flex: 1;
+}
+
+.sender-details h3 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.sender-details p {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
+
+.message-date-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.message-date-time svg {
+  flex-shrink: 0;
+}
+
+/* Message Body */
+.message-body {
+  margin-bottom: 32px;
+}
+
+.message-body p {
+  color: #e5e7eb;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+.message-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Action Buttons */
+.message-actions-bottom {
+  display: flex;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-btn-primary {
+  flex: 1;
+  padding: 14px 24px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.action-btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.action-btn-secondary {
+  flex: 1;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.action-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .message-detail-header {
+    padding: 20px 24px;
+  }
+
+  .header-left {
+    gap: 12px;
+  }
+
+  .message-detail-header h2 {
+    font-size: 16px;
+  }
+
+  .message-detail-card {
+    padding: 24px;
+  }
+
+  .sender-info {
+    flex-wrap: wrap;
+  }
+
+  .message-date-time {
+    flex: 1 1 100%;
+    margin-left: 72px;
+    margin-top: 8px;
+  }
+
+  .message-actions-bottom {
+    flex-direction: column;
+  }
+
+  .action-btn-primary,
+  .action-btn-secondary {
+    width: 100%;
+  }
+}
