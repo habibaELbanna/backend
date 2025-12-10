@@ -1,0 +1,28 @@
+.messages-page {
+  margin-left: 280px;
+  padding: 32px;
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.messages-content {
+  margin-top: 32px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .messages-page {
+    margin-left: 0;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .messages-page {
+    padding: 16px;
+  }
+
+  .messages-content {
+    margin-top: 24px;
+  }
+}
