@@ -50,8 +50,7 @@
 .stat-icon {
   width: 20px;
   height: 20px;
-  filter: brightness(0) saturate(100%) invert(46%) sepia(98%) saturate(2684%) hue-rotate(212deg) brightness(101%) contrast(91%);
-}
+ }
 
 .stat-card-body {
   display: flex;

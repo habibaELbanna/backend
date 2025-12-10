@@ -20,7 +20,7 @@ const ProjectCard = ({
 }) => {
   return (
     <div className="project-card">
-      {/* Project Image with Overlay */}
+     
       <div className="project-card-image">
         <img src={image} alt={title} />
         <div className="project-card-overlay">

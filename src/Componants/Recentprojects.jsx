@@ -1,7 +1,7 @@
 import React from 'react';
 import './RecentProjects.css';
 
-// Import your icons
+
 import externalLinkIcon from '../Assets/dashboard/external-link.svg';
 import moreIcon from '../Assets/dashboard/more.svg';
 

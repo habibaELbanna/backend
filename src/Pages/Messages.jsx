@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
-import AnalyticsOverview from '../Componants/Analyticsoverview';
-import MessageList from '../Componants/MessageList';
-import MessageDetail from '../Componants/MessageDetail';
+import StatCard from '../Componants/StatCard';
+import MessageList from '../Componants/Messagelist';
+import MessageDetail from '../Componants/Messagedetail';
 import './Messages.css';
+
+
+import TotalIcon from '../Assets/dashboard/message.svg';
+import NewIcon from '../Assets/dashboard/openmessage.svg';
+import ReadIcon from '../Assets/dashboard/read.svg';
+import StarIcon from '../Assets/dashboard/starred.svg';
 
 const Messages = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
@@ -130,29 +136,6 @@ habiba`,
   const readMessages = messages.filter(m => m.isRead).length;
   const starredMessages = messages.filter(m => m.isStarred).length;
 
-  const statsData = [
-    {
-      title: 'Total Messages',
-      value: totalMessages,
-      icon: '✉️'
-    },
-    {
-      title: 'New Messages',
-      value: newMessages,
-      icon: '📬'
-    },
-    {
-      title: 'Read Messages',
-      value: readMessages,
-      icon: '📭'
-    },
-    {
-      title: 'Starred',
-      value: starredMessages,
-      icon: '⭐'
-    }
-  ];
-
   const handleSelectMessage = (message) => {
     setSelectedMessage(message);
     // Mark as read
@@ -213,11 +196,35 @@ habiba`,
         <WelcomeBanner 
           title="Messages" 
           subtitle="Manage all messages from your contact form"
-          badge={newMessages > 0 ? `${newMessages} new message${newMessages !== 1 ? 's' : ''}` : null}
         />
 
-        {/* Analytics Overview */}
-        <AnalyticsOverview stats={statsData} />
+        {/* Stats Cards */}
+        <div className="messages-stats-grid">
+          <StatCard 
+            title="Total Messages"
+            value={totalMessages}
+            icon={TotalIcon}
+            change=""
+          />
+          <StatCard 
+            title="New Messages"
+            value={newMessages}
+            icon={NewIcon}
+            change=""
+          />
+          <StatCard 
+            title="Read Messages"
+            value={readMessages}
+            icon={ReadIcon}
+            change=""
+          />
+          <StatCard 
+            title="Starred"
+            value={starredMessages}
+            icon={StarIcon}
+            change=""
+          />
+        </div>
 
         {/* Messages Content */}
         <div className="messages-content">
