@@ -23,7 +23,7 @@ const Sidebar = () => {
     { name: 'Skills and Experience', icon: skillsIcon, path: '/skillsandexperiance' },
     { name: 'Profile', icon: profileIcon, path: '/profile' },
     // { name: 'Settings', icon: settingsIcon, path: '/settings' },
-    // { name: 'Messages', icon: messagesIcon, path: '/messages' },
+   { name: 'Messages', icon: messagesIcon, path: '/messages' },
   ];
 
   // Set active item based on current location
