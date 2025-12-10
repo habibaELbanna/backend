@@ -3,7 +3,9 @@ import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
 import ProjectCard from '../Componants/Projectcard';
-import NewProjectForm from '../Componants/Newprojectmodal';
+import NewProjectForm from '../Componants/NewProjectForm';
+import EditProjectModal from '../Componants/EditProjectModal';
+import DeleteProjectModal from '../Componants/DeleteProjectModal';
 import './ProjectManagement.css';
 
 
@@ -14,6 +16,9 @@ import kemetImg from '../Assets/projects/kemet.png';
 
 const ProjectManagement = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([
     {
       id: 1,
@@ -58,16 +63,31 @@ const ProjectManagement = () => {
   ]);
 
   const handleEditProject = (projectId) => {
-    console.log('Edit project:', projectId);
-    // Add your edit logic here
+    const project = projects.find(p => p.id === projectId);
+    setSelectedProject(project);
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveEdit = (updatedProject) => {
+    setProjects(projects.map(project => 
+      project.id === updatedProject.id ? updatedProject : project
+    ));
+    setIsEditModalOpen(false);
+    setSelectedProject(null);
   };
 
   const handleDeleteProject = (projectId) => {
-    console.log('Delete project:', projectId);
-    // Add your delete logic here
-    if (window.confirm('Are you sure you want to delete this project?')) {
-      setProjects(projects.filter(project => project.id !== projectId));
+    const project = projects.find(p => p.id === projectId);
+    setSelectedProject(project);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (selectedProject) {
+      setProjects(projects.filter(project => project.id !== selectedProject.id));
     }
+    setIsDeleteModalOpen(false);
+    setSelectedProject(null);
   };
 
   const handleNewProject = () => {
@@ -130,6 +150,22 @@ const ProjectManagement = () => {
           ))}
         </div>
       </div>
+
+      {/* Edit Project Modal */}
+      <EditProjectModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onSave={handleSaveEdit}
+        project={selectedProject}
+      />
+
+      {/* Delete Project Modal */}
+      <DeleteProjectModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleConfirmDelete}
+        projectTitle={selectedProject?.title}
+      />
     </>
   );
 };
