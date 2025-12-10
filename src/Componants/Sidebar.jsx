@@ -6,7 +6,7 @@ import dashboardIcon from '../Assets/sidebar/dashboard.svg';
 import projectsIcon from '../Assets/sidebar/projects.svg';
 import skillsIcon from '../Assets/sidebar/skills.svg';
 import profileIcon from '../Assets/sidebar/profile.svg';
-import settingsIcon from '../Assets/sidebar/settings.svg';
+import settingsIcon from '../Assets/sidebar/content.svg';
 import messagesIcon from '../Assets/sidebar/messages.svg';
 import logoutIcon from '../Assets/sidebar/logout.svg';
 import profile from '../Assets/sidebar/profileimage.svg';
@@ -22,11 +22,11 @@ const Sidebar = () => {
     { name: 'Projects', icon: projectsIcon, path: '/projectmanagment' },
     { name: 'Skills and Experience', icon: skillsIcon, path: '/skillsandexperiance' },
     { name: 'Profile', icon: profileIcon, path: '/profile' },
-    // { name: 'Settings', icon: settingsIcon, path: '/settings' },
+    { name: 'Content', icon: settingsIcon, path: '/content' },
    { name: 'Messages', icon: messagesIcon, path: '/messages' },
   ];
 
-  // Set active item based on current location
+ 
   useEffect(() => {
     const currentPath = location.pathname;
     const activeMenuItem = menuItems.find(item => item.path === currentPath);

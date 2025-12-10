@@ -7,6 +7,7 @@ import ProjectManagement from "./Pages/Projectmanagement";
 import SkillsExperience from "./Pages/Skillsexperience";
 import ProfileSettings from "./Pages/Profilesettings";
 import Messages from './Pages/Messages';
+import Content from './Pages/Content';
 
 
 const Routing = () => {
@@ -21,6 +22,7 @@ const Routing = () => {
   <Route path="/skillsandexperiance"  element={<SkillsExperience />} />
     <Route path="/profile"  element={<ProfileSettings />} />
        <Route path="/messages"  element={<Messages />} />
+        <Route path="/content"  element={<Content />} />
         </Routes>
       </BrowserRouter>
     </>
