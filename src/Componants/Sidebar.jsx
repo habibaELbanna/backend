@@ -6,7 +6,7 @@ import dashboardIcon from '../Assets/sidebar/dashboard.svg';
 import projectsIcon from '../Assets/sidebar/projects.svg';
 import skillsIcon from '../Assets/sidebar/skills.svg';
 import profileIcon from '../Assets/sidebar/profile.svg';
-import settingsIcon from '../Assets/sidebar/content.svg';
+import settingsIcon from '../Assets/dashboard/content.svg';
 import messagesIcon from '../Assets/sidebar/messages.svg';
 import logoutIcon from '../Assets/sidebar/logout.svg';
 import profile from '../Assets/sidebar/profileimage.svg';
