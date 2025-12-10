@@ -3,6 +3,7 @@ import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
 import ProjectCard from '../Componants/Projectcard';
+import NewProjectForm from '../Componants/Newprojectmodal';
 import './ProjectManagement.css';
 
 
@@ -12,6 +13,7 @@ import esportsImg from '../Assets/projects/esports.png';
 import kemetImg from '../Assets/projects/kemet.png';
 
 const ProjectManagement = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [projects, setProjects] = useState([
     {
       id: 1,
@@ -69,8 +71,16 @@ const ProjectManagement = () => {
   };
 
   const handleNewProject = () => {
-    console.log('Create new project');
-    // Add your new project logic here
+    setIsFormOpen(!isFormOpen);
+  };
+
+  const handleSaveProject = (newProject) => {
+    setProjects([...projects, newProject]);
+    console.log('New project saved:', newProject);
+  };
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
   };
 
   return (
@@ -85,10 +95,17 @@ const ProjectManagement = () => {
             <p>Add, edit, and organize your portfolio projects.</p>
           </div>
           <button className="new-project-btn" onClick={handleNewProject}>
-            <span>+</span>
-            New Project
+            <span>{isFormOpen ? '−' : '+'}</span>
+            {isFormOpen ? 'Close Form' : 'New Project'}
           </button>
         </div>
+
+        {/* New Project Form (Accordion) */}
+        <NewProjectForm
+          isOpen={isFormOpen}
+          onClose={handleCloseForm}
+          onSave={handleSaveProject}
+        />
 
         {/* Project Count */}
         <div className="project-count">
