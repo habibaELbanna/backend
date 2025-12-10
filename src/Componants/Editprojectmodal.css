@@ -1,0 +1,238 @@
+
+.epm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: epmFadeIn 0.2s ease-out;
+}
+
+@keyframes epmFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.epm-modal-container {
+  background: #1a1f2e;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: epmSlideUp 0.3s ease-out;
+}
+
+@keyframes epmSlideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.epm-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.epm-modal-header h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.epm-close-btn {
+  background: none;
+  border: none;
+  color: #8b92a7;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.epm-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+/* Modal Body */
+.epm-modal-body {
+  padding: 32px;
+  max-height: calc(90vh - 180px);
+  overflow-y: auto;
+}
+
+.epm-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.epm-modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.epm-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.epm-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Form Groups */
+.epm-form-group {
+  margin-bottom: 20px;
+}
+
+.epm-form-group label {
+  display: block;
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Inputs */
+.epm-input,
+.epm-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.epm-input:focus,
+.epm-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.epm-input::placeholder,
+.epm-textarea::placeholder {
+  color: #6b7280;
+}
+
+.epm-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Image Preview */
+.epm-image-preview {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.epm-image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Modal Footer */
+.epm-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 24px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons */
+.epm-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.epm-btn-primary {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.epm-btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.epm-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.epm-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .epm-modal-container {
+    max-height: 95vh;
+  }
+
+  .epm-modal-header {
+    padding: 20px 24px;
+  }
+
+  .epm-modal-header h2 {
+    font-size: 20px;
+  }
+
+  .epm-modal-body {
+    padding: 24px;
+  }
+
+  .epm-modal-footer {
+    padding: 20px 24px;
+    flex-direction: column-reverse;
+  }
+
+  .epm-btn {
+    width: 100%;
+  }
+}

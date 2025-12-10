@@ -3,8 +3,8 @@ import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
 import ProjectCard from '../Componants/Projectcard';
-import NewProjectForm from '../Componants/NewProjectForm';
-import EditProjectModal from '../Componants/EditProjectModal';
+import NewProjectForm from '../Componants/Newprojectmodal';
+import EditProjectModal from '../Componants/Editprojectmodal';
 import DeleteProjectModal from '../Componants/DeleteProjectModal';
 import './ProjectManagement.css';
 
