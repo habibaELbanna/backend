@@ -1,0 +1,165 @@
+.ncm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.ncm-modal-container {
+  background: #1a1f2e;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.ncm-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ncm-modal-header h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ncm-close-btn {
+  background: none;
+  border: none;
+  color: #8b92a7;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.ncm-modal-body {
+  padding: 32px;
+  max-height: calc(90vh - 180px);
+  overflow-y: auto;
+}
+
+.ncm-form-group {
+  margin-bottom: 24px;
+}
+
+.ncm-form-group label {
+  display: block;
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.ncm-input, .ncm-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.ncm-input:focus, .ncm-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.ncm-textarea {
+  resize: vertical;
+  min-height: 300px;
+}
+
+.ncm-editor-toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  flex-wrap: wrap;
+}
+
+.ncm-editor-toolbar button, .ncm-toolbar-select, .ncm-toolbar-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.ncm-toolbar-input {
+  width: 50px;
+}
+
+.ncm-editor-toolbar + .ncm-textarea {
+  border-radius: 0 0 8px 8px;
+}
+
+.ncm-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 24px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ncm-btn {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ncm-btn-primary {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.ncm-btn-primary:hover {
+  background: #2563eb;
+}
+
+.ncm-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ncm-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .ncm-modal-container {
+    max-width: 100%;
+  }
+
+  .ncm-modal-header, .ncm-modal-body, .ncm-modal-footer {
+    padding: 20px;
+  }
+
+  .ncm-modal-footer {
+    flex-direction: column-reverse;
+  }
+}

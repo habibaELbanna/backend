@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
-import ContentTypeSelector from '../Componants/ContentTypeSelector';
-import CategoriesList from '../Componants/CategoriesList';
-import TagsList from '../Componants/TagsList';
-import PagesList from '../Componants/PagesList';
-import NewCategoryModal from '../Componants/NewCategoryModal';
-import NewTagModal from '../Componants/NewTagModal';
-import NewPageModal from '../Componants/NewPageModal';
+import ContentTypeSelector from '../Componants/Contenttypeselector';
+import CategoriesList from '../Componants/Categorieslist';
+import TagsList from '../Componants/Tagslist';
+import PagesList from '../Componants/Pageslist';
+import NewCategoryModal from '../Componants/Newcategorymodal';
+import NewTagModal from '../Componants/Newtagmodal';
+import NewPageModal from '../Componants/Newpagemodal';
 import './Content.css';
 
 const Content = () => {

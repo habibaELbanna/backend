@@ -1,9 +1,9 @@
 .content-page {
-  margin-left: 280px;
-  padding: 32px;
-  padding-left: 0;
+  margin-left: 255px;
+  padding: 45px;
+
   min-height: 100vh;
-  background: #0a0e1a;
+  background-color: #0A0A1A;
 }
 
 .content-list-section {
