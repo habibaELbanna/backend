@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import WelcomeBanner from '../Componants/WelcomeBanner';
@@ -7,60 +7,41 @@ import NewProjectForm from '../Componants/Newprojectmodal';
 import EditProjectModal from '../Componants/Editprojectmodal';
 import DeleteProjectModal from '../Componants/Deleteprojectmodal';
 import './ProjectManagement.css';
-
-
-import portfolioImg from '../Assets/projects/portfolio.svg';
-import pinkTaxiImg from '../Assets/projects/pinktaxi.png';
-import esportsImg from '../Assets/projects/esports.png';
-import kemetImg from '../Assets/projects/kemet.png';
+import { supabase } from './Supabase';
 
 const ProjectManagement = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [projects, setProjects] = useState([
-    {
-      id: 1,
-      image: portfolioImg,
-      title: 'Portfolio Website Redesign',
-      description: 'A modern, responsive portfolio website built with React and Tailwind CSS. Features smooth animations, dark mode support, and dynamic content loading.',
-      category: 'Website',
-      tags: ['React.JS', ' CSS', 'Javascript'],
-      codeLink: 'https://github.com/username/portfolio',
-      demoLink: 'https://portfolio-demo.com'
-    },
-    {
-      id: 2,
-      image: pinkTaxiImg,
-      title: 'Transportation App',
-      description: 'Cross-platform mobile transportation application with secure authentication, real-time tracking updates, and data UI/UX.',
-      category: 'Mobile App',
-      tags: ['HTML', 'CSS', 'Javascript'],
-      codeLink: 'https://github.com/username/transport-app',
-      demoLink: 'https://transport-demo.com'
-    },
-    {
-      id: 3,
-      image: esportsImg,
-      title: 'ESCAPE ROOM Platform',
-      description: 'Full-stack e-sports solution with payment integration, inventory management, and admin dashboard for managing matches and stats.',
-      category: 'Web App',
-      tags: ['HTML', 'CSS', 'JavaScript'],
-      codeLink: 'https://github.com/username/esports',
-      demoLink: 'https://esports-demo.com'
-    },
-    {
-      id: 4,
-      image: kemetImg,
-      title: 'history website',
-      description: 'Real-time analytics dashboard with interactive charts, data visualization, and customizable reports for business intelligence.',
-      category: 'Dashboard',
-      tags: ['HTML', 'CSS', 'JavaScript'],
-      codeLink: 'https://github.com/username/history-website',
-      demoLink: null
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch projects on component mount
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      console.log('🔍 Fetching projects...');
+      
+      const { data, error } = await supabase
+        .from('Projects')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      console.log('✅ Projects fetched:', data);
+      setProjects(data);
+    } catch (error) {
+      console.error('❌ Error fetching projects:', error);
+      alert('Failed to load projects');
+    } finally {
+      setLoading(false);
     }
-  ]);
+  };
 
   const handleEditProject = (projectId) => {
     const project = projects.find(p => p.id === projectId);
@@ -68,12 +49,36 @@ const ProjectManagement = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleSaveEdit = (updatedProject) => {
-    setProjects(projects.map(project => 
-      project.id === updatedProject.id ? updatedProject : project
-    ));
-    setIsEditModalOpen(false);
-    setSelectedProject(null);
+  const handleSaveEdit = async (updatedProject) => {
+    try {
+      console.log('💾 Updating project:', updatedProject);
+
+      const { data, error } = await supabase
+        .from('Projects')
+        .update({
+          Title: updatedProject.title,
+          project_description: updatedProject.description,
+          Hero_image: updatedProject.image,
+          section_type: updatedProject.category?.toLowerCase(),
+          slug: updatedProject.slug || updatedProject.title.toLowerCase().replace(/\s+/g, '-')
+        })
+        .eq('id', updatedProject.id)
+        .select();
+
+      if (error) throw error;
+
+      console.log('✅ Project updated:', data);
+      
+      // Refresh projects list
+      await fetchProjects();
+      
+      setIsEditModalOpen(false);
+      setSelectedProject(null);
+      alert('Project updated successfully!');
+    } catch (error) {
+      console.error('❌ Error updating project:', error);
+      alert('Failed to update project');
+    }
   };
 
   const handleDeleteProject = (projectId) => {
@@ -82,33 +87,96 @@ const ProjectManagement = () => {
     setIsDeleteModalOpen(true);
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
     if (selectedProject) {
-      setProjects(projects.filter(project => project.id !== selectedProject.id));
+      try {
+        console.log('🗑️ Deleting project:', selectedProject.id);
+
+        const { error } = await supabase
+          .from('Projects')
+          .delete()
+          .eq('id', selectedProject.id);
+
+        if (error) throw error;
+
+        console.log('✅ Project deleted');
+        
+        // Remove from local state
+        setProjects(projects.filter(project => project.id !== selectedProject.id));
+        
+        setIsDeleteModalOpen(false);
+        setSelectedProject(null);
+        alert('Project deleted successfully!');
+      } catch (error) {
+        console.error('❌ Error deleting project:', error);
+        alert('Failed to delete project');
+      }
     }
-    setIsDeleteModalOpen(false);
-    setSelectedProject(null);
   };
 
   const handleNewProject = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const handleSaveProject = (newProject) => {
-    setProjects([...projects, newProject]);
-    console.log('New project saved:', newProject);
+  const handleSaveProject = async (newProject) => {
+    try {
+      console.log('➕ Creating new project:', newProject);
+
+      const { data, error } = await supabase
+        .from('Projects')
+        .insert([
+          {
+            Title: newProject.title,
+            project_description: newProject.description,
+            Hero_image: newProject.image,
+            section_type: newProject.category?.toLowerCase(),
+            slug: newProject.slug || newProject.title.toLowerCase().replace(/\s+/g, '-'),
+            About_Project: newProject.description
+          }
+        ])
+        .select();
+
+      if (error) throw error;
+
+      console.log('✅ Project created:', data);
+      
+      // Add to local state
+      setProjects([data[0], ...projects]);
+      
+      setIsFormOpen(false);
+      alert('Project created successfully!');
+    } catch (error) {
+      console.error('❌ Error creating project:', error);
+      alert('Failed to create project');
+    }
   };
 
   const handleCloseForm = () => {
     setIsFormOpen(false);
   };
 
+  if (loading) {
+    return (
+      <>
+        <Sidebar />
+        <DashboardHeader />
+        <div className="project-management-page">
+          <div className="project-management-header">
+            <div className="project-header-content">
+              <h1>Manage Projects</h1>
+              <p>Loading projects...</p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <Sidebar />
       <DashboardHeader />
       <div className="project-management-page">
-       
         <div className="project-management-header">
           <div className="project-header-content">
             <h1>Manage Projects</h1>
@@ -120,30 +188,27 @@ const ProjectManagement = () => {
           </button>
         </div>
 
-     
         <NewProjectForm
           isOpen={isFormOpen}
           onClose={handleCloseForm}
           onSave={handleSaveProject}
         />
 
-       
         <div className="project-count">
           <span>{projects.length} projects</span>
         </div>
 
-       
         <div className="projects-grid">
           {projects.map((project) => (
             <ProjectCard
               key={project.id}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              category={project.category}
-              tags={project.tags}
-              codeLink={project.codeLink}
-              demoLink={project.demoLink}
+              image={project.Hero_image}
+              title={project.Title}
+              description={project.project_description}
+              category={project.section_type}
+              tags={[]} // Add tags logic if you have them
+              codeLink={null}
+              demoLink={null}
               onEdit={() => handleEditProject(project.id)}
               onDelete={() => handleDeleteProject(project.id)}
             />
@@ -151,7 +216,6 @@ const ProjectManagement = () => {
         </div>
       </div>
 
-      
       <EditProjectModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
@@ -159,12 +223,11 @@ const ProjectManagement = () => {
         project={selectedProject}
       />
 
-      
       <DeleteProjectModal
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={handleConfirmDelete}
-        projectTitle={selectedProject?.title}
+        projectTitle={selectedProject?.Title}
       />
     </>
   );
