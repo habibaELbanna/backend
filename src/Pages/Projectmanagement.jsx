@@ -108,7 +108,7 @@ const ProjectManagement = () => {
       <Sidebar />
       <DashboardHeader />
       <div className="project-management-page">
-        {/* Custom Banner for Project Management */}
+       
         <div className="project-management-header">
           <div className="project-header-content">
             <h1>Manage Projects</h1>
@@ -120,19 +120,19 @@ const ProjectManagement = () => {
           </button>
         </div>
 
-        {/* New Project Form (Accordion) */}
+     
         <NewProjectForm
           isOpen={isFormOpen}
           onClose={handleCloseForm}
           onSave={handleSaveProject}
         />
 
-        {/* Project Count */}
+       
         <div className="project-count">
           <span>{projects.length} projects</span>
         </div>
 
-        {/* Projects Grid */}
+       
         <div className="projects-grid">
           {projects.map((project) => (
             <ProjectCard
@@ -151,7 +151,7 @@ const ProjectManagement = () => {
         </div>
       </div>
 
-      {/* Edit Project Modal */}
+      
       <EditProjectModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
@@ -159,7 +159,7 @@ const ProjectManagement = () => {
         project={selectedProject}
       />
 
-      {/* Delete Project Modal */}
+      
       <DeleteProjectModal
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
