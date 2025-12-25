@@ -1,102 +1,145 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import SkillsStats from '../Componants/Skillsstats';
 import SkillCategory from '../Componants/Skillcategory';
 import ExperienceCard from '../Componants/Experiencecard';
 import './SkillsExperience.css';
-
-
-import figmaIcon from '../Assets/skills/figma.svg';
-import photoshopIcon from '../Assets/skills/photoshop.svg';
-import blenderIcon from '../Assets/skills/blender.svg';
-import illustratorIcon from '../Assets/skills/illustrator.svg';
-import afterEffectsIcon from '../Assets/skills/after-effects.svg';
-import xrDesignIcon from '../Assets/skills/xr-design.svg';
-import htmlIcon from '../Assets/skills/html.svg';
-import cssIcon from '../Assets/skills/css.svg';
-import jsIcon from '../Assets/skills/javascript.svg';
-import reactIcon from '../Assets/skills/react.svg';
-import uxResearchIcon from '../Assets/skills/ux-research.svg';
-import criticalThinkingIcon from '../Assets/skills/critical-thinking.svg';
-import empathyIcon from '../Assets/skills/empathy.svg';
-import analyticalIcon from '../Assets/skills/analytical.svg';
-import contextualIcon from '../Assets/skills/contextual.svg';
-import problemSolvingIcon from '../Assets/skills/problem-solving.svg';
+import { supabase } from './Supabase';
 
 const SkillsExperience = () => {
-  // Skills Data
-  const [skillsData, setSkillsData] = useState({
-    designTools: [
-      { name: 'Figma', icon: figmaIcon },
-      { name: 'Illustrator', icon: illustratorIcon },
-      { name: 'Photoshop', icon: photoshopIcon },
-      { name: 'After Effects', icon: afterEffectsIcon },
-      { name: 'Blender', icon: blenderIcon },
-      { name: 'XR Design', icon: xrDesignIcon }
-    ],
-    frontendDev: [
-      { name: 'HTML', icon: htmlIcon },
-      { name: 'CSS', icon: cssIcon },
-      { name: 'JavaScript', icon: jsIcon },
-      { name: 'ReactJS', icon: reactIcon }
-    ],
-    softSkills: [
-      { name: 'UX Research', icon: uxResearchIcon },
-      { name: 'Critical Thinking', icon: criticalThinkingIcon },
-      { name: 'Empathy', icon: empathyIcon },
-      { name: 'Analytical Skills', icon: analyticalIcon },
-      { name: 'Contextual Understanding', icon: contextualIcon },
-      { name: 'Problem Solving', icon: problemSolvingIcon }
-    ]
-  });
-
-  // Experience Data
+  const [skills, setSkills] = useState([]);
   const [experiences, setExperiences] = useState([
     {
       id: 1,
       title: 'UX/UI Designer Intern',
       company: 'Cyshield',
       date: 'Aug 2024',
-      description: 'Working on designing user interfaces and experiences for cybersecurity products. Conducting user research, creating wireframes and prototypes, and collaborating with development teams to deliver intuitive solutions.'
+      description: 'Working on designing user interfaces and experiences for cybersecurity products.'
     },
     {
       id: 2,
       title: 'Design Intern',
-      company: 'Cyshield',
-      date: 'Aug 2024 - Aug 2024',
-      description: 'Assisted in creating design mockups and prototypes for various projects. Participated in design reviews and contributed to the development of design systems.'
+      company: 'Delta Electronic Systems',
+      date: 'Jul 2024',
+      description: 'Contributed to UI/UX design projects for electronic systems.'
     },
     {
       id: 3,
-      title: 'Design Intern',
-      company: 'Delta Electronic Systems',
-      date: 'Jul 2024 - Jul 2024',
-      description: 'Contributed to UI/UX design projects for electronic systems. Worked with cross-functional teams to implement design solutions.'
-    },
-    {
-      id: 4,
       title: 'Summer Internship',
       company: 'Delta Electronic Systems',
-      date: 'Jul 2023 - Jul 2023',
-      description: 'Gained hands-on experience in design and development. Assisted senior designers with various projects and learned industry best practices.'
+      date: 'Jul 2023',
+      description: 'Gained hands-on experience in design and development.'
     }
   ]);
+  const [loading, setLoading] = useState(true);
 
-  const handleAddCategory = () => {
-    console.log('Add new category');
+  useEffect(() => {
+    fetchSkills();
+  }, []);
+
+  const fetchSkills = async () => {
+    try {
+      console.log('🔍 Fetching skills...');
+      
+      const { data, error } = await supabase
+        .from('Skills')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (error) throw error;
+
+      console.log('✅ Skills fetched:', data);
+      setSkills(data);
+    } catch (error) {
+      console.error('❌ Error fetching skills:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleAddSkill = async (skillData) => {
+    try {
+      console.log('➕ Adding skill:', skillData);
+
+      const { data, error } = await supabase
+        .from('Skills')
+        .insert([
+          {
+            skillimg: skillData.image,
+            skill_disc: skillData.name,
+            alt: skillData.name
+          }
+        ])
+        .select();
+
+      if (error) throw error;
+
+      console.log('✅ Skill added:', data);
+      setSkills([...skills, data[0]]);
+      alert('Skill added successfully!');
+    } catch (error) {
+      console.error('❌ Error adding skill:', error);
+      alert('Failed to add skill');
+    }
+  };
+
+  const handleDeleteSkill = async (skillId) => {
+    if (window.confirm('Are you sure you want to delete this skill?')) {
+      try {
+        console.log('🗑️ Deleting skill:', skillId);
+
+        const { error } = await supabase
+          .from('Skills')
+          .delete()
+          .eq('id', skillId);
+
+        if (error) throw error;
+
+        console.log('✅ Skill deleted');
+        setSkills(skills.filter(skill => skill.id !== skillId));
+        alert('Skill deleted successfully!');
+      } catch (error) {
+        console.error('❌ Error deleting skill:', error);
+        alert('Failed to delete skill');
+      }
+    }
   };
 
   const handleAddExperience = () => {
     console.log('Add new experience');
+    // Implement add experience modal/form
   };
+
+  // Group skills by category (you can add a category column to Skills table later)
+  const allSkills = skills.map(skill => ({
+    id: skill.id,
+    name: skill.skill_disc,
+    icon: skill.skillimg
+  }));
+
+  if (loading) {
+    return (
+      <>
+        <Sidebar />
+        <DashboardHeader />
+        <div className="skills-experience-page">
+          <div className="page-header">
+            <div className="page-header-content">
+              <h1>Skills & Experience</h1>
+              <p>Loading...</p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
       <Sidebar />
       <DashboardHeader />
       <div className="skills-experience-page">
-        {/* Page Header */}
         <div className="page-header">
           <div className="page-header-content">
             <h1>Skills & Experience</h1>
@@ -104,53 +147,49 @@ const SkillsExperience = () => {
           </div>
         </div>
 
-        {/* Stats */}
         <SkillsStats 
-          totalSkills={16}
-          categories={3}
-          workExperience={4}
+          totalSkills={skills.length}
+          categories={1}
+          workExperience={experiences.length}
           yearsExperience="Fresh grad"
         />
 
-        {/* Skills Section */}
         <div className="section-header">
           <div className="section-header-content">
             <h2>Skills</h2>
             <p>Manage your technical and professional skills</p>
           </div>
-          <button className="add-category-btn" onClick={handleAddCategory}>
+          <button 
+            className="add-category-btn" 
+            onClick={() => {
+              const name = prompt('Enter skill name:');
+              const image = prompt('Enter skill image URL:');
+              if (name && image) {
+                handleAddSkill({ name, image });
+              }
+            }}
+          >
             <span>+</span>
-            Add Category
+            Add Skill
           </button>
         </div>
 
         <div className="skills-section">
           <SkillCategory
-            title="Design Tools"
-            skills={skillsData.designTools}
-            onAddSkill={() => console.log('Add skill to Design Tools')}
-            onEditCategory={() => console.log('Edit Design Tools')}
-            onDeleteCategory={() => console.log('Delete Design Tools')}
-          />
-
-          <SkillCategory
-            title="Frontend Development"
-            skills={skillsData.frontendDev}
-            onAddSkill={() => console.log('Add skill to Frontend')}
-            onEditCategory={() => console.log('Edit Frontend')}
-            onDeleteCategory={() => console.log('Delete Frontend')}
-          />
-
-          <SkillCategory
-            title="UX & Soft Skills"
-            skills={skillsData.softSkills}
-            onAddSkill={() => console.log('Add skill to Soft Skills')}
-            onEditCategory={() => console.log('Edit Soft Skills')}
-            onDeleteCategory={() => console.log('Delete Soft Skills')}
+            title="All Skills"
+            skills={allSkills}
+            onAddSkill={() => {
+              const name = prompt('Enter skill name:');
+              const image = prompt('Enter skill image URL:');
+              if (name && image) {
+                handleAddSkill({ name, image });
+              }
+            }}
+            onEditCategory={() => console.log('Edit category')}
+            onDeleteCategory={() => console.log('Delete category')}
           />
         </div>
 
-        {/* Work Experience Section */}
         <div className="section-header">
           <div className="section-header-content">
             <h2>Work Experience</h2>
