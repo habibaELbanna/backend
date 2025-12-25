@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../Componants/Sidebar';
 import DashboardHeader from '../Componants/DashboardHeader';
 import ProfileImageUpload from '../Componants/Profileimageupload';
@@ -6,21 +6,60 @@ import BasicInfoForm from '../Componants/Basicinfoform';
 import ContactInfoForm from '../Componants/Contactinfoform';
 import SocialLinksForm from '../Componants/Sociallinksform';
 import './ProfileSettings.css';
+import { supabase } from './Supabase';
 
 const ProfileSettings = () => {
   const [profileData, setProfileData] = useState({
-    image: 'https://via.placeholder.com/120',
-    fullName: 'habiba elbanna',
-    jobTitle: 'Full Stack Developer & UI/UX Designer',
+    image: '',
+    fullName: '',
+    jobTitle: '',
     bio: '',
-    email: 'habibaelbanna@example.com',
-    website: 'https://habibaelbanna.com',
-    linkedin: 'https://linkedin.com/in/habibaelbanna',
-    github: 'https://github.com/habibaelbanna',
-    behance: 'https://behance.net/habibaelbanna'
+    email: '',
+    website: '',
+    linkedin: '',
+    github: '',
+    behance: ''
   });
 
   const [hasChanges, setHasChanges] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
+  const fetchProfileData = async () => {
+    try {
+      console.log('🔍 Fetching profile data...');
+      
+      const { data, error } = await supabase
+        .from('About')
+        .select('*')
+        .eq('id', 1)
+        .single();
+
+      if (error) throw error;
+
+      console.log('✅ Profile data fetched:', data);
+      
+      // Map Supabase data to component state
+      setProfileData({
+        image: data.myimage || '',
+        fullName: 'Habiba Elbanna', // Add this field to About table if needed
+        jobTitle: 'UX/UI Designer', // Add this field to About table if needed
+        bio: data.discribtion2 || '',
+        email: 'habiba@example.com', // Add this field to About table if needed
+        website: '',
+        linkedin: '',
+        github: '',
+        behance: ''
+      });
+    } catch (error) {
+      console.error('❌ Error fetching profile:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleImageChange = (newImage) => {
     setProfileData(prev => ({ ...prev, image: newImage }));
@@ -42,25 +81,57 @@ const ProfileSettings = () => {
     setHasChanges(true);
   };
 
-  const handleSave = () => {
-    console.log('Saving profile data:', profileData);
-    // Add your save logic here (API call, etc.)
-    setHasChanges(false);
-    alert('Profile settings saved successfully!');
+  const handleSave = async () => {
+    try {
+      console.log('💾 Saving profile data:', profileData);
+
+      const { data, error } = await supabase
+        .from('About')
+        .update({
+          myimage: profileData.image,
+          discribtion2: profileData.bio
+        })
+        .eq('id', 1)
+        .select();
+
+      if (error) throw error;
+
+      console.log('✅ Profile updated:', data);
+      setHasChanges(false);
+      alert('Profile settings saved successfully!');
+    } catch (error) {
+      console.error('❌ Error saving profile:', error);
+      alert('Failed to save profile settings');
+    }
   };
 
   const handleCancel = () => {
-    // Reset to original data or navigate away
-    console.log('Canceling changes');
+    fetchProfileData();
     setHasChanges(false);
   };
+
+  if (loading) {
+    return (
+      <>
+        <Sidebar />
+        <DashboardHeader />
+        <div className="profile-settings-page">
+          <div className="page-header">
+            <div className="page-header-content">
+              <h1>Profile Settings</h1>
+              <p>Loading...</p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
       <Sidebar />
       <DashboardHeader />
       <div className="profile-settings-page">
-        {/* Page Header */}
         <div className="page-header">
           <div className="page-header-content">
             <h1>Profile Settings</h1>
@@ -68,7 +139,6 @@ const ProfileSettings = () => {
           </div>
         </div>
 
-        {/* Profile Form */}
         <div className="profile-form-container">
           <ProfileImageUpload 
             currentImage={profileData.image}
@@ -102,7 +172,6 @@ const ProfileSettings = () => {
           />
         </div>
 
-        {/* Action Buttons */}
         <div className="profile-actions">
           <button className="cancel-btn" onClick={handleCancel}>
             Cancel
@@ -110,6 +179,7 @@ const ProfileSettings = () => {
           <button 
             className={`save-btn ${hasChanges ? 'save-btn-active' : ''}`}
             onClick={handleSave}
+            disabled={!hasChanges}
           >
             Save Changes
           </button>
